@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
     print("\nTraining models...")
     
-    y_pred_knn = classifier.knn_classifier(X_train, y_train, X_test)
+    y_pred_knn, knn = classifier.knn_classifier(X_train, y_train, X_test)
     print("Knn... OK")
 
     y_pred_dt = classifier.decision_tree(X_train, y_train, X_test)
@@ -33,4 +33,6 @@ if __name__ == '__main__':
     print(f'Confusion Matrix:\n{knn_conf_matrix}')
     print(f'Classification Report:\n{knn_class_report}')
 
-    print("\nTODO()")
+    analysis.confusion_matrix_view(knn_conf_matrix, knn.classes_)
+    analysis.roc_curve_view(y_test, y_pred_knn)
+    analysis.learning_curve_view(knn, X_train, y_train, 10)
