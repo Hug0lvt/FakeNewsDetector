@@ -1,10 +1,13 @@
-FROM django
+FROM python:3.8
 
 EXPOSE 8000
 WORKDIR /app
+#ENV PYTHONUNBUFFERED=1
 
 COPY . /app
+
+RUN wget http://fr.archive.ubuntu.com/ubuntu/pool/universe/p/python-stdlib-extensions/python-tk_2.7.18-1_amd64.deb
 RUN pip install --upgrade pip
-RUN pip install -r /app/requirements.txt
+RUN pip install -r requirements.txt
 
 ENTRYPOINT ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
