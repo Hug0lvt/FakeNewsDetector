@@ -3,8 +3,8 @@ FROM django
 EXPOSE 8000
 WORKDIR /app
 
-COPY ../../requirements.txt /app
-RUN pip install -r requirements.txt
 COPY . /app
+RUN pip install -r /app/requirements.txt
+
 
 ENTRYPOINT ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
