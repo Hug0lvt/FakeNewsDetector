@@ -1,0 +1,30 @@
+kind: pipeline
+type: docker
+name: CD_PlotaFakeNews
+
+trigger:
+  event:
+    - push
+
+steps:
+  - name: docker_image
+    image: plugins/docker
+    settings:
+       dockerfile: src/app/Dockerfile
+       context: src/app/
+       registry: hub.codefirst.iut.uca.fr
+       repo: hub.codefirst.iut.uca.fr/hugo.livet/plota-fake-news
+       username:
+         from_secret: SECRET_REGISTRY_USERNAME
+       password:
+         from_secret: SECRET_REGISTRY_PASSWORD
+
+  - name: deploy-application
+    image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-dockerproxy-clientdrone:latest
+    environment:
+        IMAGENAME: hub.codefirst.iut.uca.fr/hugo.livet/plota-fake-news:latest
+        CONTAINERNAME: PlotaFakeNews
+        COMMAND: create
+        OVERWRITE: true
+        ADMINS: axelde_la_fuente, hugolivet
+    depends_on: [ docker_image]

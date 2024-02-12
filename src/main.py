@@ -5,6 +5,8 @@ import analysis
 from warnings import simplefilter
 simplefilter(action='ignore', category=FutureWarning)
 
+import pandas as pd
+
 if __name__ == '__main__':
     print("Start learning...")
 
