@@ -32,7 +32,7 @@ def learning_curve_view(classifier, X_train, y_train, learning_reps):
     test_scores_mean = np.mean(test_scores, axis=1)
 
     plt.plot(train_sizes, train_scores_mean, label='Train')
-    plt.plot(train_sizes, test_scores_mean, label='Test')
+    plt.plot(train_sizes, test_scores_mean, label='Validation')
     plt.xlabel("Training set size")
     plt.ylabel('Score')
     plt.title('Learning curve')
