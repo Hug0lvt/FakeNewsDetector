@@ -60,6 +60,8 @@ _(N.B. Italic columns are not used for learning models)_
 
 - [Django documentation](https://www.djangoproject.com/en/5.0/)
 
+- [Provenance](https://github.com/KaiDMML/FakeNewsNet)
+
 ## Authors
 
 [LIVET Hugo](https://codefirst.iut.uca.fr/git/hugo.livet)
