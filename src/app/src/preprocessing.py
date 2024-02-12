@@ -15,9 +15,17 @@ def process():
 
     return X_train, X_test, y_train, y_test 
 
+def no_split_process():
+    df = load_datas()
+
+    df = tokenize_datas(df)
+
+    X, y = features_selection(df)
+
+    return X, y
 
 def load_datas():
-    return pd.read_csv("../datas/FakeNewsNet.csv")
+    return pd.read_csv("../../datas/FakeNewsNet.csv")
 
 def tokenize_datas(df):
     le = LabelEncoder()
@@ -31,8 +39,6 @@ def tokenize_datas(df):
     df["news_url"] = label
     df["title"] = label1
     df["source_domain"] = label2
-
-    print(df)
 
     return df
 

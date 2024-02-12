@@ -8,10 +8,12 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&display=swap" rel="stylesheet">
 <style>
     body, html {height: 100%}
-    h1, h4, span, label, button {font-family: 'Fira Code', monospace;}
+    h1, h4, span, label, button, p {font-family: 'Fira Code', monospace;}
+    p {color:red}
     .credit{position: absolute; bottom:0; right:0; margin:.5rem;}
     form > div{margin:.5rem;}
     form{
@@ -19,41 +21,41 @@
         justify-content: center;
     }
     button{
-
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-decoration: none;
-  text-transform: uppercase;
-  background-color: white;
-  cursor: pointer;
-  border: 3px solid;
-  padding: 0.25em 0.5em;
-  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-button:active {
-  box-shadow: 0px 0px 0px 0px;
-  top: 5px;
-  left: 5px;
-}
-
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: white;
+        cursor: pointer;
+        border: 3px solid;
+        padding: 0.25em 0.5em;
+        box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+        position: relative;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+    button:active {
+        box-shadow: 0px 0px 0px 0px;
+        top: 5px;
+        left: 5px;
+    }
 </style>
 </head>
 <body>
 
 <div class="w3-animate-opacity">
   <div class="w3-display-middle">
-    <h1 class="w3-jumbo w3-animate-top">Fake News Detector</h1>
+    <h1 class="w3-jumbo">Fake News Detector</h1>
     <h4>Enter title and url of the news:</h4>
     <form method="post">
         {% csrf_token %}
         {{ form }}
         <button type="submit">Is it fake ??</button>
     </form>
+    <p>
+        {{ result }}
+    </p>
   </div>
 </div>
 
