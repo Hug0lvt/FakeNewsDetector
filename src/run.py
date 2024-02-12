@@ -1,0 +1,58 @@
+import classifier
+import analysis
+
+def run_knn(X_train, y_train, X_test, y_test):
+    print("\nTraining models...") 
+    y_pred_knn, knn = classifier.knn_classifier(X_train, y_train, X_test)
+    print("Knn... OK")
+    print("\nMetrics calculations...")   
+    print("\n--------------Knn metrics---------------")
+    knn_accuracy, knn_conf_matrix, knn_class_report = analysis.metrics(y_test, y_pred_knn)
+    print(f'Accuracy: {knn_accuracy}')
+    print(f'Confusion Matrix:\n{knn_conf_matrix}')
+    print(f'Classification Report:\n{knn_class_report}')
+    analysis.confusion_matrix_view(knn_conf_matrix, knn.classes_)
+    analysis.roc_curve_view(y_test, y_pred_knn)
+    analysis.learning_curve_view(knn, X_train, y_train, 10)
+
+def run_decision_tree(X_train, y_train, X_test, y_test):
+    print("\nTraining models...") 
+    y_pred_dt, dt = classifier.decision_tree(X_train, y_train, X_test)
+    print("DecisionTree... OK")
+    print("\nMetrics calculations...")   
+    print("\n--------------Decision Tree metrics---------------")
+    dt_accuracy, dt_conf_matrix, dt_class_report = analysis.metrics(y_test, y_pred_dt)
+    print(f'Accuracy: {dt_accuracy}')
+    print(f'Confusion Matrix:\n{dt_conf_matrix}')
+    print(f'Classification Report:\n{dt_class_report}')
+    analysis.confusion_matrix_view(dt_conf_matrix, dt.classes_)
+    analysis.roc_curve_view(y_test, y_pred_dt)
+    analysis.learning_curve_view(dt, X_train, y_train, 10)
+
+def run_logistic_regression(X_train, y_train, X_test, y_test):
+    print("\nTraining models...") 
+    y_pred_lr, lr = classifier.logistic_regression(X_train, y_train, X_test)
+    print("Logistic Regression... OK")
+    print("\nMetrics calculations...")   
+    print("\n--------------Logistic Regression metrics---------------")
+    lr_accuracy, lr_conf_matrix, lr_class_report = analysis.metrics(y_test, y_pred_lr)
+    print(f'Accuracy: {lr_accuracy}')
+    print(f'Confusion Matrix:\n{lr_conf_matrix}')
+    print(f'Classification Report:\n{lr_class_report}')
+    analysis.confusion_matrix_view(lr_conf_matrix, lr.classes_)
+    analysis.roc_curve_view(y_test, y_pred_lr)
+    analysis.learning_curve_view(lr, X_train, y_train, 10)
+
+def run_stochastic_gradient_descent(X_train, y_train, X_test, y_test):
+    print("\nTraining models...") 
+    y_pred_sgd, sgd = classifier.sgd_classifier(X_train, y_train, X_test)
+    print("SGD... OK")
+    print("\nMetrics calculations...")   
+    print("\n--------------Logistic Regression metrics---------------")
+    sgd_accuracy, sgd_conf_matrix, sgd_class_report = analysis.metrics(y_test, y_pred_sgd)
+    print(f'Accuracy: {sgd_accuracy}')
+    print(f'Confusion Matrix:\n{sgd_conf_matrix}')
+    print(f'Classification Report:\n{sgd_class_report}')
+    analysis.confusion_matrix_view(sgd_conf_matrix, sgd.classes_)
+    analysis.roc_curve_view(y_test, y_pred_sgd)
+    analysis.learning_curve_view(sgd, X_train, y_train, 10)
