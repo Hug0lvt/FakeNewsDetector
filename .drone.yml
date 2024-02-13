@@ -26,5 +26,5 @@ steps:
         CONTAINERNAME: PlotaFakeNews
         COMMAND: create
         OVERWRITE: true
-        ADMINS: axelde_la_fuente, hugolivet
-    depends_on: [ docker_image]
+        ADMINS: axelde_la_fuente,hugolivet
+    depends_on: [ docker_image ]
