@@ -25,7 +25,7 @@ def no_split_process():
     return X, y
 
 def load_datas():
-    return pd.read_csv("../../datas/FakeNewsNet.csv")
+    return pd.read_csv("datas/FakeNewsNet.csv")
 
 def tokenize_datas(df):
     le = LabelEncoder()
